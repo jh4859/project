@@ -1,0 +1,61 @@
+.notice-board {
+    width: 1200px;
+}
+
+.community-container {
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  .tab-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 40px;
+  }
+  
+  .tab-menu button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .tab-menu button.active {
+    background-color: #599468;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .notice-board table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .notice-board  table tr {
+    height: 60px;
+    border-top: 1px solid #ccc;
+}
+
+.notice-board  table tr th {
+    /* border: 1px solid #ccc; */
+    width: 10%;
+    background-color: #f7f7f7;
+    font-size: 18px;
+}
+
+.notice-board  table tr th:nth-child(2) {
+    width: 40%;
+}
+
+.notice-board  table tr td {
+    font-size: 18px;
+    text-align: center;
+}
+
+.notice-board  table tr td:nth-child(2) {
+    text-align: left;
+}
