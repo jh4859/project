@@ -1,0 +1,145 @@
+.community-container {
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  /*------------------------------------------------ tab-menu -----------------------------------------------------------*/
+  
+  .tab-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .tab-menu button {
+    padding: 12px 100px;
+    font-size: 16px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .tab-menu button.active {
+    background-color: #599468;
+    color: white;
+    font-weight: bold;
+  }
+
+  /*------------------------------------------------ search-box -----------------------------------------------------------*/
+
+.search-box-section {
+  display: flex;
+  justify-content: right;
+}
+
+.search-box input {
+  width: 200px;
+  height: 25px;
+  padding: 0 5px;
+  outline: 0;
+  font-size: 16px;
+}
+
+.search-box button {
+  width: 40px;
+  height: 30px;
+  background-color: #e7e7e7;
+  border: 0;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*------------------------------------------------ notice-board -----------------------------------------------------------*/
+
+.notice-board {
+    width: 1200px;
+}
+  
+.notice-board table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+.notice-board  table tr {
+    height: 60px;
+    border-top: 1px solid #ccc;
+}
+
+.notice-board  table tr th {
+    /* border: 1px solid #ccc; */
+    width: 10%;
+    background-color: #f7f7f7;
+    font-size: 18px;
+}
+
+.notice-board  table tr th:nth-child(2) {
+    width: 40%;
+}
+
+.notice-board  table tr td {
+    font-size: 18px;
+    text-align: center;
+}
+
+.notice-board  table tr td:nth-child(2) {
+    text-align: left;
+}
+
+/*------------------------------------------------ add-button -----------------------------------------------------------*/
+
+.button-section {
+  width: 1200px;
+  margin: 5px auto;
+}
+
+.add-button {
+  display: flex;
+  justify-content: right;
+}
+
+.add-button button {
+  width: 70px;
+  height: 40px;
+  background-color: #e7e7e7;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*------------------------------------------------ 페이지네이션 -------------------------------------------------------------*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button, .pagination span {
+  padding: 8px 16px;
+  height: 40px;
+  line-height: 32px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  margin: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.pagination button {
+  color: #2c3e50;
+}
+
+.pagination .prev-btn, .pagination .next-btn {
+  background-color: #599468;
+  color: #fff;
+}
+
+.pagination span.active {
+  font-weight: bold;
+}
