@@ -1,0 +1,120 @@
+.add-board-wrapper {
+    width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px solid #e7e7e7;
+    font-family: 'Noto Sans KR', sans-serif;
+    align-items: center;
+  }
+  
+  .form-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .file-title, .file-content, .file-upload {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .file-title label, .file-content label, .upload-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  
+  .file-title input, .file-upload textarea {
+    height: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .file-content textarea {
+    height: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .textarea-info {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+  
+  .file-upload .file-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .file-name-input {
+    width: 900px;
+    padding: 10px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .upload-button {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    background-color: #fab864;
+    padding: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .upload-button:hover {
+    background-color: #FFA128;
+    color: #eee;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    width: 80px;
+    height: 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #fab864;
+  }
+
+  .submit-btn:hover,
+  .cancel-btn:hover {
+    background-color: #FFA128;
+    color: #eee;
+  }
+  
+  .submit-btn {
+    color: #000;
+  }
+  
+  .cancel-btn {
+    color: #333;
+  }
+  
