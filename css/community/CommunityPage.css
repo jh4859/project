@@ -144,6 +144,9 @@
   color: #2c3e50;
 }
 
-.pagination span.active {
+.pagination button.active {
   font-weight: bold;
+  background-color: #FFA128; /* 원하는 배경 색상 */
+  color: white;  /* 글자 색상 */
+  border-radius: 5px;
 }
