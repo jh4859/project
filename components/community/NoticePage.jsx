@@ -13,12 +13,15 @@ const NoticePage = () => {
 
   // 게시물 필터링 (검색 기능)
   const filteredPosts = posts
-    .filter((post) => post.category === "notice") // 카테고리 고정
-    .filter((post) =>
-      post[searchCategory]?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  .filter((post) => post.category === "notice") // 카테고리 고정
+  .filter((post) =>
+    post[searchCategory] 
+      ? post[searchCategory].toLowerCase().includes(searchTerm.toLowerCase())
+      : false // author가 없을 경우 검색 제외
+  );
 
-  // id를 기준으로 오름차순으로 정렬
+
+  //게시물 정렬
   const sortedPosts = filteredPosts.sort((a, b) => b.id - a.id);
 
   // 페이지네이션 계산
@@ -43,6 +46,11 @@ const NoticePage = () => {
     const month = String(d.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1 해줍니다.
     const day = String(d.getDate()).padStart(2, '0'); // 일도 두 자릿수로 맞춥니다.
     return `${year}. ${month}. ${day}`;
+  };
+
+   // 페이지 번호 클릭 시
+   const handlePageClick = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -123,17 +131,18 @@ const NoticePage = () => {
           이전
         </button>
 
-        {/* 페이지 번호 표시 (현재 페이지와 1, 2, 3 등 추가적으로) */}
-        <span className="active">{currentPage}</span>
+        {/* 페이지 번호 표시 */}
+        {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageClick(index + 1)} // 페이지 숫자 클릭 시 현재 페이지로 설정
+            className={currentPage === index + 1 ? "active" : ""}
+          >
+            {index + 1}
+          </button>
+        ))}
 
-        {/* 다음 페이지 번호, 최대 2페이지까지만 표시 */}
-        {currentPage < Math.ceil(filteredPosts.length / postsPerPage) && (
-          <>
-            <span>{currentPage + 1}</span>
-          </>
-        )}
-
-        {/* 이후 버튼 */}
+        {/* 다음 버튼 */}
         <button
           onClick={() =>
             setCurrentPage((p) =>
