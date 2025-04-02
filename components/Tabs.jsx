@@ -7,7 +7,7 @@ const Tabs = () => {
   const tabList = [
     { name: '공지사항', path: '/community/notice' },
     { name: '소통창', path: '/community/chat' },
-    { name: 'FAQ', path: '/community/faq' },
+    { name: '자주하는 질문', path: '/community/faq' },
   ];
 
   return (
