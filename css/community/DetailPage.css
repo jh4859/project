@@ -39,17 +39,18 @@
 .attached-img {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 20px;
     margin-top: 15px;
 }
 
 .img-preview {
-    width: 31%;
+    width: 49%;
   }
   
 .img-preview img {
     width: 100%;
-    height: 400px; 
+    height: 350px; 
   }
 
 .attached-files {
