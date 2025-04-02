@@ -17,6 +17,7 @@ const NoticePage = () => {
       post[searchCategory]?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  //게시물 정렬
   const sortedPosts = filteredPosts.sort((a, b) => b.id - a.id);
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -38,6 +39,11 @@ const NoticePage = () => {
     const month = String(d.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1 해줍니다.
     const day = String(d.getDate()).padStart(2, '0'); // 일도 두 자릿수로 맞춥니다.
     return `${year}. ${month}. ${day}`;
+  };
+
+   // 페이지 번호 클릭 시
+   const handlePageClick = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -84,7 +90,8 @@ const NoticePage = () => {
               ) : (
                 currentPosts.map((p, index) => (
                   <tr key={p.id}>
-                    <td>{(currentPage - 1) * postsPerPage + index + 1}</td> {/* 각 페이지마다 번호 계산 */}
+                     {/* 번호 매기기 (오름차순) */}
+                     <td>{(filteredPosts.length - (currentPage - 1) * postsPerPage - index)}</td>
                     <td
                       onClick={() => navigate(`/community/chat/${p.id}`)}
                       style={{ cursor: "pointer" }}
@@ -109,14 +116,33 @@ const NoticePage = () => {
       </div>
 
       <div className="pagination">
-        <button onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}>이전</button>
-        <span className="active">{currentPage}</span>
+        {/* 이전 버튼 */}
+        <button
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          이전
+        </button>
+
+        {/* 페이지 번호 표시 */}
+        {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageClick(index + 1)} // 페이지 숫자 클릭 시 현재 페이지로 설정
+            className={currentPage === index + 1 ? "active" : ""}
+          >
+            {index + 1}
+          </button>
+        ))}
+
+        {/* 다음 버튼 */}
         <button
           onClick={() =>
             setCurrentPage((p) =>
               p < Math.ceil(filteredPosts.length / postsPerPage) ? p + 1 : p
             )
           }
+          disabled={currentPage === Math.ceil(filteredPosts.length / postsPerPage)}
         >
           이후
         </button>
