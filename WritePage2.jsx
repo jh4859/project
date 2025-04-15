@@ -15,36 +15,74 @@ const WritePage2 = () => {
   const location = useLocation();
   const { category } = useParams();
 
+  // ✅ 커스텀 업로드 어댑터
+  function CustomUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+      return new CustomUploadAdapter(loader);
+    };
+  }
+
+  class CustomUploadAdapter {
+    constructor(loader) {
+      this.loader = loader;
+    }
+
+    upload() {
+      return this.loader.file.then(file => {
+        const formData = new FormData();
+        formData.append('upload', file);
+
+        return fetch('http://localhost:8080/api/board/image-upload', {
+          method: 'POST',
+          body: formData
+        })
+          .then(response => response.json())
+          .then(result => {
+            // 서버에서 { url: '/uploads/파일명.jpg' } 이런 식으로 반환됨
+            return {
+              default: `http://localhost:8080${result.url}`
+            };
+          })
+          .catch(err => {
+            console.error("이미지 업로드 실패:", err);
+            return Promise.reject(err);
+          });
+      });
+    }
+
+    abort() {
+      // 업로드 취소 시 처리할 내용 (생략 가능)
+    }
+  }
+
   // 폼 제출
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("content", content); // CKEditor에서 입력된 내용
+    formData.append("content", content);
     formData.append("category", category);
 
-    // 파일이 있을 경우, FormData에 파일 추가
     files.forEach((file) => {
       formData.append("files", file);
     });
 
-    // Axios를 사용해 데이터를 서버로 전송
     try {
       await axios.post(`/api/board/${category}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      navigate(`/${category}`); // 게시물 등록 후 해당 카테고리 페이지로 이동
+      alert('게시글 등록 성공!');
+      navigate(`/${category}`);
     } catch (error) {
       console.error("게시물 등록 실패:", error);
     }
   };
 
-  // 파일 선택 처리 함수
   const handleFileChange = (e) => {
-    setFiles([...e.target.files]); // 파일 상태 업데이트
+    setFiles([...e.target.files]);
   };
 
   const handleCancel = () => {
@@ -74,15 +112,12 @@ const WritePage2 = () => {
             <CKEditor
               editor={ClassicEditor}
               data={content}
+              config={{
+                extraPlugins: [CustomUploadAdapterPlugin],
+              }}
               onChange={(event, editor) => {
                 const data = editor.getData();
-                setContent(data); // CKEditor에서 입력한 데이터를 content 상태에 저장
-              }}
-              config={{
-                ckfinder: {
-                  // 서버에 이미지 업로드 URL 설정
-                  uploadUrl: "http://localhost:8080/api/board/image-upload", 
-                },
+                setContent(data);
               }}
             />
           </div>
@@ -93,7 +128,7 @@ const WritePage2 = () => {
               type="file"
               id="file"
               multiple
-              onChange={handleFileChange} // 파일 변경 시 상태 업데이트
+              onChange={handleFileChange}
             />
           </div>
 
