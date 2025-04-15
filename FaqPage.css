@@ -1,0 +1,160 @@
+/*------------------------------------------------ faq-top -----------------------------------------------------------*/
+
+.faq-board {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.faq-title h2 {
+    font-size: 40px;
+    text-align: center; /* 제목을 가운데 정렬 */
+}
+
+/*------------------------------------------------ faq-search-box -----------------------------------------------------------*/
+
+.faq-search-box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center; /* 검색 박스를 가운데 정렬 */
+}
+
+.faq-search-box select {
+    width: 100px;
+    height: 40px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+  
+.faq-search-box input {
+    width: 350px;
+    height: 40px;
+    padding: 0 5px;
+    outline: 0;
+    font-size: 16px;
+}
+  
+.faq-search-box button {
+    width: 60px;
+    height: 40px;
+    background-color: #FFA128;
+    border: 0;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #eee;
+}
+
+/*---------------------------------------------------------- FAQ 목록 스타일 ---------------------------------------------------*/
+
+.faq-list {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* FAQ 목록을 가운데 정렬 */
+  border-top: 1px solid #000;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  /* margin-bottom: 10px; */
+  transition: all 0.3s ease;
+  width: 100%; /* 리스트가 화면 너비를 채우도록 설정 */
+}
+
+.faq-item-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 14px 0;
+}
+
+.faq-item-header:hover {
+  background-color: #f0f0f0;
+}
+
+.faq-item-header p {
+    font-size: 25px;
+}
+
+.faq-item-details p {
+    font-size: 18px;
+}
+
+.faq-item-details {
+  padding: 14px 0;
+  border-top: 1px solid #ddd;
+  display: none;
+}
+
+.faq-item.open .faq-item-details {
+  display: block;
+}
+
+/*------------------------------------------------ add-button -----------------------------------------------------------*/
+
+.button-section {
+  width: 1200px;
+  margin: 5px auto;
+}
+
+.add-btn {
+  display: flex;
+  justify-content: right;
+}
+
+.add-btn button {
+  width: 70px;
+  height: 40px;
+  background-color: #FFA128;
+  color: #eee;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*------------------------------------------------ 페이지네이션 -------------------------------------------------------------*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination button, .pagination span {
+  padding: 8px 16px;
+  height: 40px;
+  line-height: 32px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  margin: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.pagination button {
+  color: #2c3e50;
+}
+
+.pagination .prev-btn, .pagination .next-btn {
+  color: #2c3e50;
+}
+
+.pagination button.active {
+  font-weight: bold;
+  background-color: #FFA128; /* 원하는 배경 색상 */
+  color: white;  /* 글자 색상 */
+  border-radius: 5px;
+}

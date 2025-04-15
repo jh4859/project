@@ -1,0 +1,164 @@
+.add-board-wrapper {
+    width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px solid #e7e7e7;
+    font-family: 'Noto Sans KR', sans-serif;
+    align-items: center;
+  }
+  
+  .form-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .file-title, .file-content, .file-upload {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .file-title label, .file-content label, .upload-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  
+  .file-title input, .file-upload textarea {
+    height: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .textarea-info {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+  
+  .file-upload .file-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .file-name-input {
+    width: 900px;
+    padding: 10px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Editor Toolbar */
+.editor-toolbar {
+  display: flex;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+/* Individual Editor Buttons */
+.editor-btn {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.editor-btn:hover {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.editor-btn:active {
+  background-color: #d0d0d0;
+  border-color: #999;
+}
+
+.editor-btn b, .editor-btn i, .editor-btn u {
+  font-weight: normal;
+}
+
+.editor-btn i {
+  font-style: italic;
+}
+
+.editor-btn u {
+  text-decoration: underline;
+}
+
+/* Content Editor Area */
+.editor-area {
+  outline: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #f9f9f9;
+  min-height: 200px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* File Upload and Button Styling */
+.file-upload .file-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.file-upload .upload-button {
+  background-color: #0078d4;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.file-upload .upload-button:hover {
+  background-color: #005fa3;
+}
+
+/* Buttons at the bottom */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.submit-btn, .cancel-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #FFA128;
+  color: white;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #FFA128;
+    color: white;
+    border: none;
+}
