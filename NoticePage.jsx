@@ -1,30 +1,47 @@
+import React from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 import { useState, useEffect, useContext } from "react";
 import { CafeContext } from "../CafeProvider";
 import { useNavigate } from "react-router-dom";
 import Tabs from "../Tabs";
-import axios from "axios";
-import React from 'react';
 
 const NoticePage = () => {
-  const { posts, setPosts } = useContext(CafeContext);  // setPosts도 받아옵니다.
-  const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
-  const [searchCategory, setSearchCategory] = useState('title'); // 검색 카테고리
-  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
-  const [postsPerPage] = useState(10); // 한 페이지 당 게시글 개수
+  // const { posts } = useContext(CafeContext);
+  const { posts, setPosts } = useContext(CafeContext);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchCategory, setSearchCategory] = useState('title');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
   const navigate = useNavigate();
-
-  const [loading, setLoading] = useState(false);
+  const { category } = useParams();
 
   // 게시물 필터링 (검색 기능)
   const filteredPosts = posts
-    .filter((post) => post.category === "notice") // 카테고리 고정
-    .filter((post) =>
-      post[searchCategory]
-        ? post[searchCategory].toLowerCase().includes(searchTerm.toLowerCase())
-        : false // author가 없을 경우 검색 제외
-    );
+  .filter((post) => post.category === "notice") // 카테고리 고정
+  .filter((post) =>
+    post[searchCategory] 
+      ? post[searchCategory].toLowerCase().includes(searchTerm.toLowerCase())
+      : false // author가 없을 경우 검색 제외
+  );
 
-  // 게시물 정렬
+  // ✅ 게시글 목록 불러오기
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get('/api/board');
+      setPosts(res.data); // 예: [{ id: 1, title: '', content: '', category: 'notice' }, ...]
+    } catch (err) {
+      console.error('게시글 목록 불러오기 실패', err);
+    }
+  };
+
+
+  //게시물 정렬
   const sortedPosts = filteredPosts.sort((a, b) => b.id - a.id);
 
   // 페이지네이션 계산
@@ -34,7 +51,7 @@ const NoticePage = () => {
 
   // "글쓰기" 버튼 클릭 시
   const handleClick = () => {
-    navigate(`/notice/add`);
+    navigate(`/${category}/add`);
   };
 
   // 검색 제출 시 페이지 리셋
@@ -51,60 +68,62 @@ const NoticePage = () => {
     return `${year}. ${month}. ${day}`;
   };
 
-  // 페이지 번호 클릭 시
-  const handlePageClick = (page) => {
+   // 페이지 번호 클릭 시
+   const handlePageClick = (page) => {
     setCurrentPage(page);
   };
 
   return (
     <div className="community-container">
       <Tabs />
-      <div className="community-board">
-        <div className="community-top">
-          <div className="community-title">
-            <h2>공지사항</h2>
+      <div className="tab-content">
+        <div className="community-board">
+          <div className="community-top">
+            <div className="community-title">
+              <h2>공지사항</h2>
+            </div>
+            <div className="search-box">
+              <form onSubmit={handleSearchSubmit}>
+                <select value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)}>
+                  <option value="title">제목</option>
+                  <option value="author">작성자</option>
+                </select>
+                <input
+                  type="search"
+                  placeholder="내용을 입력해주세요."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button type="submit">검색</button>
+              </form>
+            </div>
           </div>
-          <div className="search-box">
-            <form onSubmit={handleSearchSubmit}>
-              <select value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)}>
-                <option value="title">제목</option>
-                <option value="author">작성자</option>
-              </select>
-              <input
-                type="search"
-                placeholder="내용을 입력해주세요."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <button type="submit">검색</button>
-            </form>
-          </div>
-        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentPosts.length === 0 ? (
+          <table>
+            <thead>
               <tr>
-                <td colSpan="4">게시글이 없습니다.</td>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
               </tr>
-            ) : (
-              currentPosts.map((p, index) => (
-                <tr key={p.id}>
+            </thead>
+            <tbody>
+              {currentPosts.length === 0 ? (
+                <tr>
+                  <td colSpan="5">게시글이 없습니다.</td>
+                </tr>
+              ) : (
+                currentPosts.map((p, index) => (
+                  <tr key={p.id}>
                   <td
                     className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
                   >
                     {(filteredPosts.length - (currentPage - 1) * postsPerPage - index)}
                   </td>
                   <td
-                    onClick={() => navigate(`/chat/${p.id}`)}
+                    onClick={() => navigate(`/${category}/${p.id}`)}
                     className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
                   >
                     <strong>{p.title}</strong>
@@ -125,10 +144,11 @@ const NoticePage = () => {
                     {p.views || 0}
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div className="button-section">
@@ -138,10 +158,15 @@ const NoticePage = () => {
       </div>
 
       <div className="pagination">
-        <button onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))} disabled={currentPage === 1}>
+        {/* 이전 버튼 */}
+        <button
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          disabled={currentPage === 1}
+        >
           이전
         </button>
 
+        {/* 페이지 번호 표시 */}
         {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, index) => (
           <button
             key={index + 1}
@@ -152,6 +177,7 @@ const NoticePage = () => {
           </button>
         ))}
 
+        {/* 다음 버튼 */}
         <button
           onClick={() =>
             setCurrentPage((p) =>
