@@ -1,19 +1,15 @@
-// DetailPage.jsx
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { CafeContext } from "../CafeProvider";
 import React from 'react';
 import axios from 'axios';
-
 import Tabs from "../community/Tabs";
-import LightboxImageViewer from "./LightboxImageViewer"; // 확대 이미지 모달 컴포넌트 import
 
 function DetailPage() {
   const { addComment } = useContext(CafeContext);
   const { category, postId } = useParams();
   const [post, setPost] = useState(null);
   const [comment, setComment] = useState("");
-  const [lightboxImage, setLightboxImage] = useState(null);
   const navigate = useNavigate();
 
   const formatDate = (date) => {
@@ -27,7 +23,7 @@ function DetailPage() {
       .catch(err => console.error(err));
   }, [category, postId]);
 
-  // 이미지 썸네일 처리 + 클릭 이벤트 (모달로 원본 보기)
+  // 이미지 썸네일 처리
   useEffect(() => {
     if (!post) return;
     const contentEl = document.querySelector('.content');
@@ -59,9 +55,6 @@ function DetailPage() {
 
         img.src = thumbnail;
         img.classList.add('thumbnail-image');
-        img.style.cursor = 'zoom-in';
-
-        img.onclick = () => setLightboxImage(originalSrc);
       };
     });
 
@@ -96,7 +89,7 @@ function DetailPage() {
           <div className="attached-files">
             <p>첨부파일:</p>
             <ul>
-              {post.files.map((f,i) => (
+              {post.files.map((f, i) => (
                 <li key={i}>
                   <a href={`http://localhost:8080/api/board/download/${f.savedName}`} download>
                     {f.originalName}
@@ -107,20 +100,19 @@ function DetailPage() {
           </div>
         )}
 
-        <div className="content" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div className="content" dangerouslySetInnerHTML={{ __html: post.textContent }} />
 
-        {/* 확대 모달 */}
-        {lightboxImage &&
-          <LightboxImageViewer
-            imageUrl={lightboxImage}
-            onClose={() => {
-              setLightboxImage(null);
-              document.querySelectorAll('.content img').forEach(img => {
-                img.classList.add('thumbnail-image');
-              });
-            }}
-          />
-        }
+        {/* 이미지 썸네일 */}
+        <div className="images">
+          {post.imageUrls && post.imageUrls.length > 0 && post.imageUrls.map((url, idx) => (
+            <img
+              key={idx}
+              src={url.startsWith("http") ? url : `${window.location.origin}${url}`}
+              alt={`첨부이미지-${idx}`}
+              className="thumbnail-image"
+            />
+          ))}
+        </div>
 
         <div className="list-btn">
           <button onClick={() => navigate(`/${category}`)}>목록</button>
@@ -130,7 +122,7 @@ function DetailPage() {
       <div className="comment-section">
         <h4>댓글</h4>
         <div className="commentlist-section">
-          {post.comments?.map((c,i) => (
+          {post.comments?.map((c, i) => (
             <div className="comments" key={i}>
               <span>{c.author}</span>
               <p>{c.text}</p>
