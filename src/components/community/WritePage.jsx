@@ -5,17 +5,18 @@ import Tabs from "../community/Tabs";
 import axios from "axios";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { parse } from 'node-html-parser'; // ✅ 추가
 
 const WritePage = () => {
   const { addBoard } = useContext(CafeContext);
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState(""); // CKEditor에서 작성한 내용을 저장
-  const [files, setFiles] = useState([]); // 파일 상태 추가
+  const [content, setContent] = useState(""); // CKEditor에서 작성한 전체 HTML 저장
+  const [files, setFiles] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]); // 이미지 파일 추가
   const navigate = useNavigate();
   const location = useLocation();
   const { category } = useParams();
 
-  // ✅ 커스텀 업로드 어댑터
   function CustomUploadAdapterPlugin(editor) {
     editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
       return new CustomUploadAdapter(loader);
@@ -38,9 +39,10 @@ const WritePage = () => {
         })
           .then(response => response.json())
           .then(result => {
-            // 서버에서 { url: '/uploads/파일명.jpg' } 이런 식으로 반환됨
+            // 이미지 URL만 리턴받고, 해당 파일을 imageFiles 배열에 추가
+            setImageFiles(prev => [...prev, file]); // 이미지 파일을 배열에 저장
             return {
-              default: `http://localhost:8080${result.url}`
+              default: `http://localhost:8080${result.url}` // 이미지 URL 리턴
             };
           })
           .catch(err => {
@@ -50,28 +52,56 @@ const WritePage = () => {
       });
     }
 
-    abort() {
-      // 업로드 취소 시 처리할 내용 (생략 가능)
-    }
+    abort() {}
   }
 
-  // 폼 제출
+  // ✅ content에서 텍스트, 이미지 리스트 추출하는 함수
+  const parseContent = (htmlContent) => {
+    const root = parse(htmlContent);
+
+    // 이미지 src 추출
+    const images = root.querySelectorAll('img').map(img => img.getAttribute('src'));
+
+    // 텍스트만 추출 (img 태그 삭제)
+    root.querySelectorAll('img').forEach(img => img.remove());
+    const textContent = root.toString(); // 텍스트만 남은 HTML
+
+    console.log("추출된 이미지 URL들:", images); // ✅ 이미지 URL 확인
+
+    return { textContent, images };
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { textContent, images } = parseContent(content); // ✅ content 분리
+
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("content", content);
+    formData.append("textContent", textContent); // 텍스트 본문
     formData.append("category", category);
+    formData.append("imageUrls", JSON.stringify(images)); // 이미지는 JSON 문자열로 보내기
+    
+    // FormData 내용 확인하기
+    console.log("FormData 내용:");
+    formData.forEach((value, key) => {
+      console.log(key + ": " + value);
+    });
 
+    // 파일들 추가 (일반 파일)
     files.forEach((file) => {
       formData.append("files", file);
+    });
+
+    // 이미지 파일들 추가 (이미지 파일)
+    imageFiles.forEach((file) => {
+      formData.append("imageFiles", file); // imageFiles에 저장된 파일들을 추가
     });
 
     try {
       await axios.post(`/api/board/${category}`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       alert('게시글 등록 성공!');
