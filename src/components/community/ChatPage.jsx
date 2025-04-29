@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';  // useContext 추가
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect, useContext } from "react";
-import { CafeContext } from "../CafeProvider";
 import { useNavigate } from "react-router-dom";
+import { CafeContext } from "../CafeProvider"; // CafeContext 가져오기
 import Tabs from "../community/Tabs";
 
-const ChatPage = () => {
-  const { posts, setPosts } = useContext(CafeContext);
+const NoticePage = () => {
+  const { posts, setPosts } = useContext(CafeContext); // useContext 사용
   const [inputTerm, setInputTerm] = useState(""); // 사용자 입력값
   const [searchTerm, setSearchTerm] = useState(""); // 실제 검색 트리거 값
   const [searchCategory, setSearchCategory] = useState('title');
@@ -118,33 +117,25 @@ const ChatPage = () => {
               ) : (
                 currentPosts.map((p, index) => (
                   <tr key={p.id}>
-                  <td
-                    className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
-                  >
-                    {(filteredPosts.length - (currentPage - 1) * postsPerPage - index)}
-                  </td>
-                  <td
-                    onClick={() => navigate(`/${category}/${p.id}`)}
-                    className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
-                  >
-                    <strong>{p.title}</strong>
-                  </td>
-                  <td
-                    className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
-                  >
-                    {p.author || "관리자"}
-                  </td>
-                  <td
-                    className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
-                  >
-                    {formatDate(p.createDate)}
-                  </td>
-                  <td
-                    className={p.content ? 'with-border' : ''}  // content가 있을 때만 border 추가
-                  >
-                    {p.views || 0}
-                  </td>
-                </tr>
+                    <td className={p.content ? 'with-border' : ''}>
+                      {(filteredPosts.length - (currentPage - 1) * postsPerPage - index)}
+                    </td>
+                    <td
+                      onClick={() => navigate(`/${category}/${p.id}`)}
+                      className={p.content ? 'with-border' : ''}
+                    >
+                      <strong>{p.title}</strong>
+                    </td>
+                    <td className={p.content ? 'with-border' : ''}>
+                      {p.author || '관리자'}
+                    </td>
+                    <td className={p.content ? 'with-border' : ''}>
+                      {formatDate(p.createDate)}
+                    </td>
+                    <td className={p.content ? 'with-border' : ''}>
+                        {p.views || 0}
+                    </td>
+                  </tr>
                 ))
               )}
             </tbody>
@@ -159,26 +150,21 @@ const ChatPage = () => {
       </div>
 
       <div className="pagination">
-        {/* 이전 버튼 */}
         <button
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
         >
           이전
         </button>
-
-        {/* 페이지 번호 표시 */}
         {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, index) => (
           <button
             key={index + 1}
-            onClick={() => handlePageClick(index + 1)} // 페이지 숫자 클릭 시 현재 페이지로 설정
-            className={currentPage === index + 1 ? "active" : ""}
+            onClick={() => handlePageClick(index + 1)}
+            className={currentPage === index + 1 ? 'active' : ''}
           >
             {index + 1}
           </button>
         ))}
-
-        {/* 다음 버튼 */}
         <button
           onClick={() =>
             setCurrentPage((p) =>
@@ -194,4 +180,4 @@ const ChatPage = () => {
   );
 };
 
-export default ChatPage;
+export default NoticePage;
