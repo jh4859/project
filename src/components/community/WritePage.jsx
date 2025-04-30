@@ -55,20 +55,28 @@ const WritePage = () => {
     abort() {}
   }
 
-  // ✅ content에서 텍스트, 이미지 리스트 추출하는 함수
   const parseContent = (htmlContent) => {
+    // node-html-parser 로 DOM 파싱
     const root = parse(htmlContent);
-
-    // 이미지 src 추출
-    const images = root.querySelectorAll('img').map(img => img.getAttribute('src'));
-
-    // 텍스트만 추출 (img 태그 삭제)
-    root.querySelectorAll('img').forEach(img => img.remove());
-    const textContent = root.toString(); // 텍스트만 남은 HTML
-
-    console.log("추출된 이미지 URL들:", images); // ✅ 이미지 URL 확인
-
-    return { textContent, images };
+  
+    let placeholderHtml = htmlContent;
+    const images = [];
+  
+    root.querySelectorAll('img').forEach((img, idx) => {
+      const src = img.getAttribute('src');
+      const outer = img.toString();           // e.g. <img src="...">
+      const placeholder = `[[IMG${idx}]]`;
+  
+      // html 내에서 <img> 태그 문자열을 플레이스홀더로 교체
+      placeholderHtml = placeholderHtml.replace(outer, placeholder);
+  
+      images.push(src);
+    });
+  
+    return {
+      textContent: placeholderHtml,  // 토큰이 남아 있는 “텍스트” 블럭
+      images                         // 실제 URL 리스트
+    };
   };
 
   const handleSubmit = async (e) => {
@@ -163,8 +171,8 @@ const WritePage = () => {
           </div>
 
           <div className="button-group">
-            <button type="submit" className="submit-btn">등록</button>
             <button type="button" className="cancel-btn" onClick={handleCancel}>취소</button>
+            <button type="submit" className="submit-btn">등록</button>
           </div>
         </form>
       </div>
