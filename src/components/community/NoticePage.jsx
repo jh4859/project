@@ -115,20 +115,17 @@ const NoticePage = () => {
                 </tr>
               ) : (
                 currentPosts.map((p, index) => (
-                  <tr key={p.id}>
-                    <td className={p.content ? 'with-border' : ''}>
+                  <tr key={p.id} className={currentPosts.length > 0 ? 'with-border' : ''}>
+                    <td>
                       {(filteredPosts.length - (currentPage - 1) * postsPerPage - index)}
                     </td>
-                    <td
-                      onClick={() => navigate(`/${category}/${p.id}`)}
-                      className={p.content ? 'with-border' : ''}
-                    >
+                    <td onClick={() => navigate(`/${category}/${p.id}`)}>
                       <strong>{p.title}</strong>
                     </td>
-                    <td className={p.content ? 'with-border' : ''}>
+                    <td>
                       {p.author || '관리자'}
                     </td>
-                    <td className={p.content ? 'with-border' : ''}>
+                    <td>
                       {formatDate(p.createDate)}
                     </td>
                   </tr>
