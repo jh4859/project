@@ -113,11 +113,11 @@ const FaqPage = () => {
               currentPosts.map((p, index) => (
                 <div key={p.id} className={`faq-item ${openPost === p.id ? 'open' : ''}`}>
                   <div className="faq-item-header" onClick={() => togglePost(p.id)}>
-                    <p>{p.title}</p>
+                    <p>Q. {p.title}</p>
                   </div>
                   {openPost === p.id && (
                     <div className="faq-item-details">
-                      <p dangerouslySetInnerHTML={{ __html: p.textContent }} />
+                      <p dangerouslySetInnerHTML={{ __html: p.textContent.replace('<p>', '<p>A. ') }} />
                     </div>
                   )}
                 </div>
