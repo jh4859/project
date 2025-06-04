@@ -1,0 +1,221 @@
+
+
+.signup-total-box{
+  background-color: #f4f4f4;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  min-height: 100vh;
+  height: auto; 
+}
+.showdow-box{
+  background-color: #ffffff;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  min-height: 500px;
+}
+.signup-img-box {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.signup-img-left {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-img-left img{
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.signup-container {
+    background-color: #ffffff;
+    padding: 30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    margin: 0;
+    height: 100%;
+  }
+  
+  .signup-h2 {
+    color: #333;
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+  .signup-error-text {
+    color: red;
+    position: relative;
+    top: -10px; /* 위로 6px 당김 */
+    font-size: 0.9rem;
+  }
+  .signup-success-text{
+    color: green;
+    position: relative;
+    top: -10px; /* 위로 6px 당김 */
+    font-size: 0.9rem;
+  }
+  .signup-userid{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  .signup-username,
+  .signup-email,
+  .signup-pwd,
+  .signup-pwd-ck,
+  .signup-niname,
+  .signup-address,
+  .signup-adr-p,
+  .postalCode {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  .signup-userid:focus,
+  .signup-username:focus,
+  .signup-email:focus,
+  .signup-pwd:focus,
+  .signup-pwd-ck:focus,
+  .signup-niname:focus {
+    border-color: #964b25;
+    outline: none;
+  }
+  .dubleck-box {
+    display: flex;
+    gap: 10px;
+  }
+  .signup-niname,
+  .signup-userid,
+  .dck-btn{
+    height: 40px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .dck-btn {
+    background-color: rgb(255, 161, 40);
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    width: 120px;
+    padding: 10px 0;
+  }
+  .sigh-submit {
+    background-color: rgb(255, 161, 40);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-user-type {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signup-user-type label {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .address-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .address-container .postalCode,
+  .adr-btn{
+    height: 40px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .address-container .postalCode {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .adr-btn {
+    background-color: rgb(255, 161, 40);
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    width: 120px;
+    padding: 10px 0;
+  }
+
+  .address-container .signup-address,
+  .address-container #detailAddress {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+  }
+  
+  .sigh-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+  }
+  
+  .sigh-footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .sigh-footer a {
+    color: #964b25;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  
+  .sigh-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .signup-radio-n input[type="radio"],
+  .signup-radio-c input[type="radio"]{
+    margin-right: 3px;
+  }

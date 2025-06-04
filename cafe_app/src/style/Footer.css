@@ -1,0 +1,214 @@
+footer{
+  background-color: #333;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+.footer-section{
+  background-color: #333;
+}
+
+.footer-section-sub{
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  padding: 25px 10px;                               /* 이용약관 */
+}
+
+.footer-section-sub p{
+  cursor: pointer;
+  color: #eee;
+}
+
+.footer-section-sub p:hover{
+  text-decoration: underline;
+  color: #eee;
+}
+
+.footer-hr{
+  border: 0;
+  border-bottom: 1px solid rgba(231, 231, 231, 0.4);
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+.footer-section-main{
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.footer-utils{
+  width: 50%;
+  padding-bottom: 30px;
+}
+
+.footer-utils-icon{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.footer-utils-icon img{
+  max-width: 350px;
+  object-fit: cover;
+}
+
+.footer-utils-info{
+  padding: 0 10px;
+  color: #999;
+}
+
+.footer-utils-info p{
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.footer-utils-info span{
+  font-size: 12px;
+}
+
+.footer-contact{
+  display: flex;
+  gap: 15px;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+.footer-nav{
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
+  margin-top: 30px;
+  width: 50%;
+}
+
+.footer-util-navmenu{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-util-navmenu p, .footer-util-navmenu a{
+  margin-bottom: 10px;
+}
+
+.footer-util-navmenu p{
+  font-size: 18px;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.footer-util-navmenu a{
+  color: #999;
+}
+
+.footer-util-navmenu a:hover{
+  text-decoration: underline;
+  color: #eee;
+}
+
+.footer-util-icon i{
+  font-size: 30px;
+  margin: 0 10px;
+  color: #eee;
+}
+
+.footer-util-icon i:hover {
+  transform: scale(1.08);
+}
+
+
+/*--------------------------------------------------------------------------------------------*/
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.times-close {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+  color: #999;
+  background-color: transparent;  /*배경 투명*/
+}
+.modal-section {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;   /* 팝업이 열릴때 스르륵 열리는 효과 */
+  overflow: hidden;
+}
+.modal-header {
+  position: relative;
+  padding: 16px 20px;
+  font-weight: 700;
+  height: 50px;
+}
+
+.modal-main {
+  padding: 16px;
+  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  white-space: initial;
+}
+.modalfooter {
+  padding: 12px 16px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  background-color: #fff;
+}
+.modalfooter-close {
+  padding: 12px 16px;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  padding: 6px 12px;
+  color: #fff;
+  background-color: #6c757d;
+  border-radius: 2px;
+  font-size: 13px;
+}
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+@keyframes modal-show {  /*모달 창*/
+  from {              /*애니메이션 시작 상태*/
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {                /*애니메이션 끝 상태*/
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {  /*모달 창 백그라운드*/
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
