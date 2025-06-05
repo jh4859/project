@@ -1,0 +1,219 @@
+
+.admin-board {
+    display: flex;
+    background-color: #ffffff;
+}
+
+.sidebar-allbox-main {
+  width: 80px;
+}
+
+
+/* 메인 컨텐츠 */
+.mainlist-content {
+    padding: 30px;
+    width: calc(100% - 240px);
+    background-color: #fff;
+}
+
+.adminboard4-h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* 검색 필터 */
+.admin-4-search-container {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    max-width: 450px;
+    margin-left: auto;
+  }
+  
+  .admin-4-search-select {
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    height: 38px;
+  }
+  
+  .admin-4-search-input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    height: 38px;
+  }
+  
+  .admin-4-search-btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 38px;
+    transition: background-color 0.3s ease;
+  }
+
+
+/* 게시판 테이블 */
+.admin-listboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.admin-listboard-table tr th, .admin-listboard-table tr td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+.admin-listboard-table td {
+    padding:8px;
+}
+
+.admin-listboard-table th {
+    background: #34495e; /* 짙은 회색 */
+    color: #fff;
+    font-weight: 500;
+}
+
+.admin-listboard-table th {
+    width:10%;
+}
+
+.admin-listboard-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.admin-listboard-table tr:hover {
+    background: #ecf0f1;
+}
+
+/* 수정, 삭제, 미리보기, 반려 등등 버튼 */
+.board4-view-btn {
+    background-color: #34495e; 
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .board4-view-btn:hover {
+    background-color: #34495e;
+  }
+
+.board4-approve-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  /* margin: 0 3px; */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.board4-reject-btn {
+  background-color: #e74c3c; 
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.board4-return-btn {
+  background-color: #3498db; 
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  /* margin: 0 3px; */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.board4-delete-btn {
+  background-color: #e74c3c; 
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination-btn_prev-btn, .pagination-btn_next-btn {
+    padding: 8px 16px;
+    height: 40px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.pagination span {
+    padding: 8px 16px;
+    height: 40px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    color: #2c3e50;
+    cursor: pointer;
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.pagination span.active {
+    font-weight: bold;
+    color: #fff;
+    background-color: #2c3e50;
+}
+
+
+/* 상태 글자색 */
+.status-pending {
+  color: gray;
+  font-weight: bold;
+}
+
+.status-approved {
+  color: #3498db;
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: red;
+  font-weight: bold;
+}

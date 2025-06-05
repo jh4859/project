@@ -1,0 +1,119 @@
+
+.admin-bord-2-box {
+    display: flex;
+    background-color: #eef1f4; /* 밝은 회색 배경 */
+}
+
+
+/* 메인 컨텐츠 */
+.mainlist-bord2-content {
+    margin-left: 240px;
+    padding: 30px;
+    width: calc(100% - 240px);
+    background-color: #fff;
+}
+
+.adminbord2-h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* 게시판 테이블 */
+.admin-listboard-table-2 {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.admin-listboard-table-2 th, .admin-listboard-table-2 td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+.admin-listboard-table-2 td {
+    padding:8px;
+}
+
+.admin-listboard-table-2 th {
+    background: #34495e; /* 짙은 회색 */
+    color: #fff;
+    font-weight: 500;
+}
+
+.admin-listboard-table-2 th {
+    width:10%;
+}
+
+.admin-listboard-table-2 tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.admin-listboard-table-2 tr:hover {
+    background: #ecf0f1;
+}
+
+/* 수정, 삭제 버튼 */
+.admin-listboard-table-2 td button {
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #3498db; /* 파란색 */
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.admin-listboard-table-2 td button.delete-btn {
+    background-color: #e74c3c; /* 빨간색 삭제 버튼 */
+}
+
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination-btn_prev-btn, .pagination-btn_next-btn {
+    padding: 8px 16px;
+    height: 40px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.pagination span {
+    padding: 8px 16px;
+    height: 40px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    color: #2c3e50;
+    cursor: pointer;
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.pagination span.active {
+    font-weight: bold;
+    color: #fff;
+    background-color: #2c3e50;
+}
