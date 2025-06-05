@@ -1,0 +1,240 @@
+.allcontainer {
+    width: 1200px;
+    margin: 15px auto;
+}
+
+.main-container {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+/*------------------------------------------------ title -----------------------------------------------------------*/
+
+.title-section {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid black ;
+    align-items: center;
+    margin-top: 50px;
+    padding: 5px 10px;
+}
+
+.title-section h2 {
+    font-size: 30px;
+}
+
+.info {
+    padding: 5px 0px;
+    display: flex;
+}
+
+.info span {
+    margin-right: 20px;
+}
+
+.edit-delete-buttons {
+    text-align: right;
+}
+
+.com-edit-btn{
+    width: 90px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #FFA128;
+    color: #eee;
+    border: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: 8px;
+}
+
+/*------------------------------------------------ content -----------------------------------------------------------*/
+
+.content {
+    padding: 10px 10px;
+}
+
+.attached-files {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #b8b4b4 ;
+}
+
+.attached-files p {
+    padding: 10px 10px;
+}
+
+.attached-files ul{
+    list-style: none;
+    display: flex;
+}
+
+.attached-files ul li{
+    margin-left: 10px;
+}
+
+.content p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+.content img {
+    display: block;
+    margin: 35px auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/*------------------------------------------------ list -----------------------------------------------------------*/
+.list-btn-section {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+.list-btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.list-btn button {
+    width: 90px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #FFA128;
+    color: #eee;
+    border: 0;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.list-btn button:last-child {
+    margin-left: auto;
+}
+
+/*------------------------------------------------ 댓글 -----------------------------------------------------------*/
+
+.comment-section {
+    width: 1200px;
+    margin: 0px auto;
+    padding: 10px;
+    align-items: center;
+    border-top: 1px solid black;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.comment-section h4 {
+    margin-top: 10px;
+}
+
+.commentlist-section {
+    padding: 5px;
+}
+
+.commentlist {
+    border-top: 1px solid black ;
+    margin-bottom: 10px;
+}
+
+.com_author{
+    padding: 3px 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.com_time {
+    font-size: 13px;
+      color: #888;
+}
+
+.com_time, .com_comment  {
+    padding: 3px 10px;
+}
+
+.comments {
+  position: relative;
+  padding: 5px 10px;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.com-top {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.com-top p {
+    margin-right: 5px;
+}
+
+.com-delete-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.com-delete-btn:hover {
+    color: red;
+    font-weight: bold;
+}
+
+.com-edit-btn {
+    margin-right: 10px;
+}
+
+/*------------------------------------------------ 댓글등록 -----------------------------------------------------------*/
+
+.comment-section h4, .add-comment h4 {
+    padding: 5px 0;
+    font-size: 18px;
+}
+
+.add-comment {
+    border-top: 1px solid black ;
+    margin-bottom: 15px;
+}
+
+.add-comment textarea {
+    border-color: #a8a8a8;
+    margin-top: 20px;
+}
+
+.write-section {
+    width: 100%;
+    align-items: center;
+}
+
+.write-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.add-comment textarea {
+    width: 100%;
+    height: 90px;
+    padding: 5px;
+    resize: none;
+    font-size: 14px;
+}
+  
+.write-btn button {
+    width: 90px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #FFA128;
+    color: #eee;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+  

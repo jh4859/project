@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  nav{
+    width: 1200px;
+  }
+  
+/*------------------------------------------------ menu -----------------------------------------------------------*/
+
+  .menu{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-logo{
+    width: 350px;
+    margin-top: 20px;
+  }
+  
+  .menu-logo img{                 
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+  }
+  
+  .menu-left{
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-left a{
+    font-size: 16px;
+  }
+  
+  /* .menu-left a:hover{
+    color: #AB865C;
+  } */
+
+  /*-----------------------------------------------------------------------------*/
+  
+  .menu-store{
+    width: 500px;
+    text-align: center;
+  }
+  
+  .menu-store a{
+    margin : 40px 40px;
+    /* font-weight: bold; */
+    font-weight: 500;
+  }
+
+  .menu-link {
+    margin: 40px 40px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s;
+  }
+  
+  /* 현재 페이지일 때만 적용 */
+  .menu-link.active {
+    color: #FFA128;
+    /* color: #a0522d; */
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  /*-----------------------------------------------------------------------------*/
+  
+  .menu-right{
+    display: flex;
+    align-items: center;
+    height: auto;
+  }
+  
+  .menu-right a:hover{
+    color: #AB865C;
+  }
+  
+  .menu-login{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-login a{
+    padding: 0 7px;
+    font-size: 13px;
+  }
+  
+.nav-divider {
+  margin: 0 4px;
+  color: #bbb;
+}
+
+  .nav-nickname {
+    font-size: 13px;
+    color: #333; 
+    margin-right: 2px;
+  }
+  .nav-nim {
+    font-size: 13px;
+    color: #333;
+    margin-right: 8px;
+  }
+
+  /*------------------------------------------------ icon -----------------------------------------------------------*/
+  
+  .social-icons{
+    display: flex;
+    gap: 5px;
+    margin-right: 15px;
+  }
+  
+  .social-icons i{
+    font-size: 20px;
+    margin-left: 5px;
+  }
+  
+/*------------------------------------------------ hero -----------------------------------------------------------*/
+
+  .hero{
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    /* opacity: 0.9; 이미지 희미하게*/ 
+    margin-top: 90px;
+  }
+  
+  .hero-section{
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-content{
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+  }
+  
+  .hero-content p:nth-child(1){
+    font-size: 70px;
+    font-weight: bold;
+    /* color: #333; */
+  }

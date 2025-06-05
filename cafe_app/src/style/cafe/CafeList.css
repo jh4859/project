@@ -1,0 +1,182 @@
+.cafe-search{
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.cafelist-top {
+  width: 1200px;
+  text-align: left;
+  padding-bottom:20px;
+  border-bottom: 1px solid #aaa;
+}
+
+.breadcrumb-list{
+  width: 1200px;
+  font-size: 16px;
+  color: #7c7c7c;
+  padding-bottom: 17px;
+  margin: 7px auto;
+}
+
+.breadcrumb-list-arrow{
+  font-size: 14px;
+  margin: 7px;
+}
+
+.cafelist-hr{
+  border: 1px solid #aaa;
+}
+
+.cafelist-top h2{
+  font-size: 40px;
+}
+
+/* 버튼 디자인 */
+
+.cafe-btn{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-top: 40px;
+  border-top: 1px solid #aaa;
+  padding-top: 20px;
+}
+
+.cafe-search-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cafesearch-input {
+  width: 350px;
+  height: 40px;
+  padding: 0 10px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+
+.search-btn{
+  width: 60px;
+  height: 40px;
+  background-color: #FFA128;
+  border: none;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #eee;
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+
+.cafelist-info{
+  width: 1200px;
+  margin: 30px auto;
+}
+
+.cafe-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 30px 57px;
+}
+
+.cafe-item{
+  flex-basis: calc(31% - 10px);       /* 3열 */
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.cafe-item:hover {
+  transform: translateY(-5px);              /* 이미지 위로 올라간거 */
+  /* transform: scale(1.05); */             /* 이미지 커지는거 */
+}
+
+.cafe-item-img {
+  width: 100%;
+  height: 300px;
+}
+
+.cafe-item-img img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.cafe-item-text{
+  font-size: 18px;
+  padding: 15px 20px;
+}
+
+.cafe-item-text h3{
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.cafe-item-text p{
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 15px;
+  color: rgba(0, 0, 0,0.6);
+  text-align: justify;
+}
+
+.cafe-item-detail p{
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color : #aaa;
+}
+
+.cafelist-info button{
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #FFA128;
+  color: #eee;
+  font-size: 17px;
+}
+
+/* .cafelist-info button:hover {
+  background-color: #FFA128;
+  color: #eee;
+} */
+
+.scroll-to-top{
+  position: fixed;
+  right: 50px;
+  bottom: 320px;
+  z-index: 1000;
+  padding: 15px 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #FFA128;
+  color: #eee;
+  border-radius: 50%;
+}
+
+/* .scroll-to-top:hover {
+  background-color: #FFA128;
+  color: #eee;
+} */
+
+.scroll-to-top i{
+  font-size: 20px;
+}
